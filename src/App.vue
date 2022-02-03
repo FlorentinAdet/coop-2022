@@ -1,32 +1,46 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <router-view/>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+export default {
+  name :'App',
+  mounted(){
+    this.$store.commit("setReady", false);
+    
+    if(!this.$store.state.token){
+      this.seConnecter();
+    }else{
+      this.$api
+        .get(`members/${this.$store.state.member.id}/signedin`)
+        .then(this.demarrer)
+        .catch(this.seConnecter);
     }
-  }
+    this.$api.get('ping').then()
+      if(!this.$store.state.token){
+        this.$router.push('connexion');
+      }
+  },
+  methods:{
+    ready(){
+      this.$store.commit("setReady", true);
+    },
+    demarrer(){
+      this.$api.get("members").then((response) => {
+        this.$store.commit("setMembers", response.data);
+        this.ready();
+      });
+    },
+    seConnecter(){
+      this.$store.commit("setToken",false);
+      this.$router.push("/connexion");
+      this.ready();
+    },
+  },
+}
+</script>
+<style lang="scss">
+#app{
+  text-align: center 
 }
 </style>
