@@ -21,11 +21,6 @@ const routes = [
     component: () => import( '../views/Connexion.vue')
   },
   {
-    path: '/deconnexion',
-    name: 'Deconnexion',
-    component: () => import( '../views/Deconnexion.vue')
-  },
-  {
     path: '/creer-conversation',
     name: 'CreerConversation',
     component: () => import( '../views/CreerConversation.vue')
