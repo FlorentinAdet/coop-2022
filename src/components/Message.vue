@@ -62,7 +62,7 @@ export default {
         dateMessage(){
             let d = new Date(this.message.created_at);
             return( 
-                d.toLocaleDateString("fr-FR") + " à " + d.toLocaleDateString('fr-FR')
+                d.toLocaleDateString("fr-FR") + " à " + d.toLocaleTimeString('fr-FR')
             );
         },
         member(){

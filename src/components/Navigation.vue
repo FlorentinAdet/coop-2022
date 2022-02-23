@@ -18,7 +18,7 @@
                 </div>
                 <div class="navbar-item">
                     <div class="buttons">
-                    <router-link class="button is-warning" to="deconnexion"> Se déconnecter </router-link>
+                    <button class="button is-warning" @click.prevent="deconnexion"> Se déconnecter </button>
                     </div>
                 </div>
         </div>
@@ -27,7 +27,19 @@
 
 <script>
 export default {
-
+    methods:{
+        deconnexion(id){
+            this.$api
+                .delete("members/signout",id )
+                .then((response) => {
+                    console.log("delete");
+                    this.$router.push({name:'Connexion'})
+                })
+                .catch((error)=> {
+                    console.log("NON")
+                });
+        },
+    },
 }
 </script>
 

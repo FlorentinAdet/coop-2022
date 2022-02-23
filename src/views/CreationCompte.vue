@@ -1,22 +1,51 @@
 <template>
-    <div>
-        <h2>Créer un compte</h2>
-        <form @submit.prevent="validation">
-            <div>
-                <input type="text" required v-model="fullname" />
+    <section class="hero is-primary is-fullheight">
+        <div class="hero-boyd">
+            <div class="container">
+                <div class="column is-2 is-offset-5">
+                    <h1 class="title">Coop</h1>
+                    <h1 class="subtitle">Créer un compte</h1>
+                </div>
+                <div class="column is-6 is-offset-3">
+                    <form @submit.prevent="validation">
+                        <div class="field">
+                            <label class="label">Pseudo : </label>
+                            <p class="control has-icons-left has-icons-right">
+                                <input class="input" type="text" placeholder="pseudo" required  v-model="fullname">
+                                 <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <label class="label">Email : </label>
+                            <p class="control has-icons-left has-icons-right">
+                                <input class="input" type="email" placeholder="Email" required v-model="email">
+                                <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                                </span>
+                            </p>
+                        </div>
+                         <div class="field">
+                            <label class="label">Mot de passe : </label>
+                            <p class="control has-icons-left">
+                                <input class="input" type="password" placeholder="Password"  required v-model="password" >
+                                <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <button> Valider </button>
+                        <p>Vous avez déjà un compte ? Connectez vous <router-link to='connexion'> ici </router-link> </p>
+                    </form>
+                </div>
             </div>
-            <div>
-                <input type="email" required v-model="email" /> 
-            </div>
-            <div>
-                <input type="password" required v-model="password" />
-            </div>
-            <button> Valider </button>
-            <p>Vous avez déjà un compte ? Connectez vous <router-link to='connexion'> ici </router-link> </p>
-        </form>
-    </div>
+        </div>
+    </section>
 </template>
-
 <script>
 export default {
     data() {

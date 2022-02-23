@@ -21,13 +21,23 @@
                        </div>
                    </div>
                </div>
+               <div class="box">
+                    <template v-for="message in allMessages">  
+                        <message :message="message" :key="message.id" />             
+                    </template>
+               </div>
            </template>
        </section>
     </div>
 </template>
 
 <script>
+
+import Message from '../components/Message.vue';
 export default {
+    components: {
+        Message,
+    },
     data(){
         return{
             member: false,
@@ -36,13 +46,13 @@ export default {
     },
     mounted() {
         this.member = this.$store.getters.getMembre(this.$route.params.idMembre);
-        console.log(this.member);
         this.$api.get("channels").then((response) => {
             response.data.forEach((conversation) => {
                 this.$api.get(`channels/${conversation.id}/posts`).
                 then((response) => {
                     response.data.forEach((message) => {
                         if(message.member_id == this.member.id){
+                            console.log(this.allMessages);
                             this.allMessages.push(message);
                         }
                     }); 

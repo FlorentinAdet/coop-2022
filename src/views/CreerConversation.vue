@@ -4,22 +4,24 @@
   <section class="hero">
       <div class="hero-body">
           <div class="container">
-              <div class="columns">
                   <div class="column">
-                      <div class="box">
-                          <form @submit.prevent="validation" class="box">
-                              <div>
-                                  Sujet
-                                  <input v-model="conversation.topic" />
-                              </div>
-                              <div>
-                                  Etiquettes
-                                  <input v-model="conversation.label" />
-                              </div>
-                              <button>Créer une conversation </button>
-                          </form>
-                      </div>
-                  </div>
+                    <form @submit.prevent="validation" class="box">
+                        <div class="field">
+                            <label class="label">Sujet</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Sujet" v-model="conversation.topic">
+                            </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Etiquettes</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Etiquettes" v-model="conversation.label">
+                            </div>
+                        </div>
+                        <div class="control">
+                            <button class="button is-primary">Créer une conversation</button>
+                        </div>
+                    </form>
               </div>
           </div>
       </div>

@@ -1,9 +1,11 @@
 <template>
     <div>
        <Navigation />
-       <template v-for="conversation in conversations">  
+       <div class="container" id="Conversations">
+           <template v-for="conversation in conversations">  
            <conversation :key="conversation.id" :conversation="conversation" />             
        </template>
+       </div>
     </div>
 </template>
 
@@ -27,4 +29,7 @@ export default {
 };
 </script>
 <style>
+#Conversations{
+    padding : 1rem;    
+}
 </style>
